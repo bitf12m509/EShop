@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchProduct</title>
+</head>
+<body>
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li><a>Searchin results for</a></li>
+            <li class="active">@ViewBag.search</li>
+        </ol>
+    </div>
+    <table class="table table-condensed">
+        <thead>
+            <tr class="cart_menu">
+                <td class="image">Item</td>
+                <td class="description"> Name </td>
+                <td class="price">Price</td>
+                <td class="price">Brand</td>
+                <td>Action</td>
+
+            </tr>
+        </thead>
+        @foreach (var i in Model)
+        {
+        <tr>
+            <td class="cart_product">
+                <img src="@("/Content/themes/newProd/"+@i.Id+".jpg")" alt="" />
+            </td>
+            <td class="cart_description">
+                <a>@i.PName<i class="fa fa-times"></i></a>
+
+            </td>
+            <td class="cart_price">
+                <a>@i.Price<i class="fa fa-times"></i></a>
+            </td>
+
+            <td class="cart_price">
+                <a>@i.Brand1<i class="fa fa-times"></i></a>
+            </td>
+
+            <td>
+                <a>@Html.ActionLink("Purchase This item", "AddCart", new { id = i.Id })</a>
+                <a>@Html.ActionLink("Add To Wish List", "AddWishList", new { id = i.Id })</a>
+            </td>
+        </tr>
+
+
+        }
+
+      
+
+
+
+
+    </table>
+
+</body>
+

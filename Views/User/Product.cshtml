@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+@model List<Project_E_Shop_.Models.Product>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product</title>
+</head>
+<body>
+    <div class="row">
+        <h2> Welcome @Session["uname"] </h2>
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2 class="navbar navbar-inverse" style="color:white">Category</h2>
+                <div class="panel-group category-products nav nav-pills nav-stacked" id="accordian">
+                    <!--category-productsr-->
+                   
+                   
+
+                    @foreach (var i in ViewBag.Cat) { 
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/User/Product/?Cat=@i.Cat">@i.Cat</a></h4>
+                        </div>
+                    </div>
+                  
+                    
+                    }
+
+                </div><!--/category-products-->
+               
+                <br />
+                <br />
+                <h2 class="navbar navbar-inverse" style="color:white">Brands</h2>
+                @foreach (var i in ViewBag.Brand)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/User/BrandProduct/?Brand1=@i.Brand1">@i.Brand1</a><img src="@("/Content/themes/Brands/"+@i.Id+".jpg")" /></h4>
+                            
+                        </div>
+                    </div>
+                  
+
+                }
+            </div>
+
+            <div class="price-range">
+                <form action="/User/PriceRange">
+                    <h2>Price Range</h2>
+                    <div class="well">
+                        <input type="text" name="range" class="span2" value="" min="0" max="600" "><br />
+                        <b>$ 0</b> <b class="pull-right">$ 600</b>
+                        <input type="submit" value="Find"/>
+                    </div>
+                </form>
+            </div><!--/price-range-->
+            
+        </div>
+
+        <div class="col-sm-9 padding-right">
+            <div class="features_items">
+                <!--features_items-->
+                <h2 class="title text-center" style="color:skyblue">@ViewBag.Name</h2>
+                                <p style="color:green">@ViewBag.WIsh</p>
+                @foreach (var p in Model)
+                {
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="@("/Content/themes/newProd/"+@p.Id+".jpg")" alt="" />
+                                    <h2>$@p.Price</h2>
+                                    <p>@p.PName</p>
+                                    <p style="color:skyblue">@p.Brand1</p>
+                                    <a href="/User/AddCart/@p.Id" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>
+
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="/User/AddWishList/@p.Id"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+

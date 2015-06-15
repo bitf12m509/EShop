@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css.map" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css.map" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/npm.js"></script>
+</head>
+<body>
+   
+    <header id="header" class="navbar navbar-inverse">
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href="#"><img src="~/Content/themes/base/images/call.jpg" class="img-rounded" /> +92 334 964 2000</a></li>
+                                <li><a href="#"><img src="~/Content/themes/base/images/mail.jpg" class="img-rounded" /> info@samsung.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><img src="~/Content/themes/base/images/fb.png" class="img-rounded" /></a></li>
+                                <li><a href="#"><img src="~/Content/themes/base/images/in.png" class="img-rounded" /></a></li>
+                                <li><a href="#"><img src="~/Content/themes/base/images/twitter.jpg" class="img-rounded" /></a></li>
+                                <li><a href="#"><img src="~/Content/themes/base/images/gplus.jpg" class="img-rounded" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-middle">
+        <!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="pull-left">
+                        <a href="/Home/index"><img src="~/Content/themes/base/images/logo12.png" class="img-rounded" /></a>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-8">
+                    <div class="pull-right">
+                        <ul class="nav navbar-nav">
+                           @if (Session["uname"] == null) { 
+                            <li><a href="/Home/Login"><img src="~/Content/themes/base/images/login.jpg" class="img-rounded" />Login</a></li>
+                            <li><a href="/Admin/AdminLogin"><img src="~/Content/themes/base/images/login.jpg" class="img-rounded" />Admin Login</a></li>
+                           }
+                           else
+                           {
+                                <li><a href="/User/WishList"><img src="~/Content/themes/base/images/fvrt.jpg" class="img-rounded" /> Wishlist</a></li>
+
+                            <li><a href="/User/Cart"><img src="~/Content/themes/base/images/cart.png" class="img-rounded" /> Cart</a></li>
+                            <li><a href="/User/Logout"><img src="~/Content/themes/base/images/login.jpg" class="img-rounded" />Logout</a></li>
+                           }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--middle header end-->
+    <div class="header-bottom navbar navbar-inverse">
+        <!--header-bottom-->
+        <div>
+            <div class="col-sm-12">
+                <ul class="nav navbar-nav">
+                    @if (Session["uname"] != null)
+                    { <li class="active"><a href="/User/index">Home</a></li>}
+                    else {<li class="active"><a href="/Home/index">Home</a></li> }
+                    
+                    <li><a href="/Home/ContactUs">Contact Us</a></li>
+                    <li><a href="/Home/AboutUs">About Us</a></li>
+                    
+                </ul>
+               @if(Session["uname"] != null)
+               {
+                   
+                    <form class="navbar-form navbar-left pull-right" method="post" action="/User/SearchProductByBrand" role="search">
+                    <div class="form-group">
+                        <input class="form-control" name="SearchB" type="text" placeholder="search here by Brand" />
+                    </div>
+                    <button type="submit" id="b1" class="btn btn-success">Search</button>
+                </form>
+                <form class="navbar-form navbar-left pull-right" method="post" action="/User/SearchProduct" role="search">
+                    <div class="form-group">
+                        <input class="form-control" name="Search" type="text" placeholder="search here by product name" />
+                    </div>
+                    <button type="submit" id="b2" class="btn btn-success">Search</button>
+                </form>
+               }
+            </div>
+        </div>
+    </div><!--end header bottom-->
+   <div id="d1"></div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $('#b2').click(function () {
+
+                var Search = $('#Search').val();
+
+                $('#d1').load('/User/SearchProduct?Search=' + Search);
+
+            });
+
+        });
+    </script>
+
+   <!-- <div style="width:auto; float:left">
+        //RenderSection("indexs", required: false)
+    </div>
+
+    <div style="width:auto; float:right">
+        //RenderSection("Contact", required: false)
+    </div>
+       -->
+    @RenderBody();
+
+    <!--footer STARTS-->
+    <footer id="footer" class="navbar navbar-inverse">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="single-widget">
+                            <img src="~/Content/themes/base/images/service.gif" class="img-rounded" />
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Online Help</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">New Products</a></li>
+                                
+                                <li><a href="#">FAQ’s</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="single-widget">
+                            <img src="~/Content/themes/base/images/qlink.png" class="img-rounded" />
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Mobiles</a></li>
+                                <li><a href="#">LCD's HD</a></li>
+                                <li><a href="#">Smart Cameras</a></li>
+                                <li><a href="#">Printers</a></li>
+                                <li><a href="#">Audio/Video</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="single-widget">
+                            <img src="~/Content/themes/base/images/p.jpg" class="img-rounded" />
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Terms and Conditions</a></li>
+                                <li><a href="#">Privecy Policy</a></li>
+                                <li><a href="#">Refund Policy</a></li>
+                                <li><a href="#">Billing System</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                   
+                   
+
+                </div>
+            </div>
+        </div>
+       
+    </footer>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright© 1995-2015 SAMSUNG All Rights Reserved.</p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://Samsung.com/">Samsung</a></span></p>
+            </div>
+        </div>
+    </div>
+            
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)</body>
+</html>

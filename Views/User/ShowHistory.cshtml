@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "ShowHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css.map" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css.map" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/npm.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+    <section id="cart_items">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a>Shoping History of</a></li>
+                    <li class="active">@Session["uname"]</li>
+                </ol>
+            </div>
+            <div class="table-responsive cart_info">
+
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Item Id</td>
+                            <td class="description"> Name </td>
+                            <td class="price">Price</td>
+                            <td>Time</td>
+                           
+                            @{int j = 0;   }
+                        </tr>
+                    </thead>
+                    @foreach (var i in Model)
+                    {
+                        <tr>
+                            <td class="cart_product">
+                                <a>@i.Pid</a>
+                                <img src="@("/Content/themes/newProd/"+@i.Pid+".jpg")" alt="" />
+                            </td>
+                            <td class="cart_description">
+                                <a>@i.PName<i class="fa fa-times"></i></a>
+
+                            </td>
+                            <td class="cart_price">
+                                <a>@i.Price<i class="fa fa-times"></i></a>
+                            </td>
+
+                            <td class="cart_price">
+                                <a>@i.Time<i class="fa fa-times"></i></a>
+                            </td>
+
+                            @{j += i.Price;
+                            }
+
+                           
+                        </tr>
+
+
+                    }
+
+
+                    <tr>
+                        <td></td>
+                        <td><a>Total Cost: $ @j</a></td>
+                      
+                    </tr>
+
+
+
+
+                </table>
+            </div>
+        </div>
+    </section> <!--/#cart_items-->
+    </body>
+
