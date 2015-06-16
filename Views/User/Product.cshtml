@@ -52,7 +52,7 @@
                 <form action="/User/PriceRange">
                     <h2>Price Range</h2>
                     <div class="well">
-                        <input type="text" name="range" class="span2" value="" min="0" max="600" "><br />
+                        <input type="text" name="range" class="span2" value="" min="0" max="600" /><br />
                         <b>$ 0</b> <b class="pull-right">$ 600</b>
                         <input type="submit" value="Find"/>
                     </div>
@@ -72,6 +72,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
+                                    
                                     <img src="@("/Content/themes/base/images/Products/" + @p.Id + ".jpg")" alt="" />
                                     <h2>$@p.Price</h2>
                                     <p>@p.PName</p>
