@@ -244,15 +244,14 @@
                         <li>
                             <a href="#nogo"><b>Actions</b><!--[if IE 7]><!--></a><!--<![endif]-->
                             <!--[if lte IE 6]><table><tr><td><![endif]-->
-                            <div class=" navbar navbar-inverse">
+                            <div class="select_sub show">
                                 <ul class="sub">
-                                    <li><a href="/Admin/AddProduct" style="color:white">Add Product</a></li>
-                                    <li ><a href="/Admin/ViewAllUser" style="color:white">All Users</a></li>
-                                    <li><a href="/Admin/EditDelete" style="color:white">Edit Or Delete products</a></li>
-                                    
-                                    <li><a href="/Admin/AddCat" style="color:white">Add or Delete Category</a></li>
-                                    <li><a href="/Admin/AddBrand" style="color:white">Add or Delete Brand</a></li>
-                                    <li><a href="/Admin/Feedback" style="color:white">Users Feedback</a></li>
+                                    <li><a href="/Admin/AddProduct">Add Product</a></li>
+                                    <li><a href="/Admin/ViewAllUser">All Users</a></li>
+                                    <li><a href="/Admin/EditDelete">Edit Or Delete products</a></li>
+                                    <li><a href="/Admin/AddCat">Add or Delete Category</a></li>
+                                    <li><a href="/Admin/AddBrand">Add or Delete Brand</a></li>
+                                    <li><a href="/Admin/Feedback">Users Feedback</a></li>
                                 </ul>
                             </div>
                             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -301,7 +300,7 @@
             <br />
             <!-- end page-heading -->
 
-            <table border="1" width="100%" >
+            <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
                 <tr>
                     <th rowspan="3" class="sized"><img src="~/Content/themes/base/images/adminP/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
                     <th class="topleft"></th>
@@ -318,44 +317,42 @@
                             <!--  start table-content  -->
                             <div id="table-content">
 
-                            
+
                                 <form id="mainform" action="">
-                                       
-                                    <table border="1" width="100%" >
-                                            
+
+                                    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+
                                         <tr>
-                                            
-                                            <th ><a >UserName</a>	</th>
-                                           
-                                            <th><a >Email</a></th>
-                                           
-                                            <th ><a >Password</a></th>
+
+                                            <th><a>UserName</a>	</th>
+
+                                            <th><a>Email</a></th>
+
+                                            <th><a>Password</a></th>
                                         </tr>
-                                         @foreach (var i in Model)
-                                            {
-                                        <tr>
-                                           
-                                            <td>@i.Username</td>
-                                            <td><a href="">@i.Email</a></td>
-                                            <td>@i.Password</td>
-                                            
-                                           
-                                            <td class="options-width">
-                                              
-                                                <!-- <a href="/Admin/DeleteUser" title=" delete" class="icon-2 info-tooltip"></a>-->
-                                                @Html.ActionLink("Delete This User", "DeleteUser", new { id = i.Id })
-                                                
-                                            </td>
-                                        </tr>
-                                            }
+                                        @foreach (var i in Model)
+                                        {
+                                            <tr>
+
+                                                <td>@i.Username</td>
+                                                <td><a href="">@i.Email</a></td>
+                                                <td>@i.Password</td>
+
+
+                                                <td class="options-width">
+
+                                                    <!-- <a href="/Admin/DeleteUser" title=" delete" class="icon-2 info-tooltip"></a>-->
+                                                    @Html.ActionLink("Delete This User", "DeleteUser", new { id = i.Id })
+
+                                                </td>
+                                            </tr>
+                                        }
                                     </table>
                                     <!--  end product-table................................... -->
                                 </form>
                             </div>
                             <!--  end content-table  -->
-                            
                             <!--  start paging..................................................... -->
-                           
                             <!--  end paging................ -->
 
                             <div class="clear"></div>
@@ -371,6 +368,7 @@
                     <th class="sized bottomright"></th>
                 </tr>
             </table>
+
             <div class="clear">&nbsp;</div>
 
         </div>
