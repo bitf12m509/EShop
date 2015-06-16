@@ -7,11 +7,13 @@
     <meta name="author" content="">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-ui.js"></script>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css.map" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css.map" rel="stylesheet" />
@@ -95,15 +97,10 @@
                @if(Session["uname"] != null)
                {
                    
-                    <form class="navbar-form navbar-left pull-right" method="post" action="/User/SearchProductByBrand" role="search">
-                    <div class="form-group">
-                        <input class="form-control" name="SearchB" type="text" placeholder="search here by Brand" />
-                    </div>
-                    <button type="submit" id="b1" class="btn btn-success">Search</button>
-                </form>
+                  
                 <form class="navbar-form navbar-left pull-right" method="post" action="/User/SearchProduct" role="search">
                     <div class="form-group">
-                        <input class="form-control" name="Search" type="text" placeholder="search here by product name" />
+                        <input class="form-control" id="search" name="Search" type="text" placeholder="search here by product name" />
                     </div>
                     <button type="submit" id="b2" class="btn btn-success">Search</button>
                 </form>
@@ -111,24 +108,10 @@
             </div>
         </div>
     </div><!--end header bottom-->
-   <div id="d1"></div>
+   
     @Scripts.Render("~/bundles/jquery")
-    <script>
+   
 
-        $(document).ready(function () {
-
-
-
-            $('#b2').click(function () {
-
-                var Search = $('#Search').val();
-
-                $('#d1').load('/User/SearchProduct?Search=' + Search);
-
-            });
-
-        });
-    </script>
 
    <!-- <div style="width:auto; float:left">
         //RenderSection("indexs", required: false)

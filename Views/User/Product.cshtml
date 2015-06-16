@@ -39,7 +39,7 @@
                 {
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/User/BrandProduct/?Brand1=@i.Brand1">@i.Brand1</a><img src="@("/Content/themes/Brands/"+@i.Id+".jpg")" /></h4>
+                            <h4 class="panel-title"><a href="/User/BrandProduct/?Brand1=@i.Brand1">@i.Brand1</a><img src="@("/Content/themes/base/images/Brands/"+@i.Id+".jpg")" /></h4>
                             
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="@("/Content/themes/newProd/"+@p.Id+".jpg")" alt="" />
+                                    <img src="@("/Content/themes/base/images/Products/" + @p.Id + ".jpg")" alt="" />
                                     <h2>$@p.Price</h2>
                                     <p>@p.PName</p>
                                     <p style="color:skyblue">@p.Brand1</p>
