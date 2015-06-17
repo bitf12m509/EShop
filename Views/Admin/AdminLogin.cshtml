@@ -75,7 +75,7 @@
                             <legend>Admin Login</legend>
                             <div>
                                 
-                                @Html.LabelFor(Model => Model.Email)
+                                @Html.Label("Email")
                                 @Html.TextBoxFor(Model => Model.Email)
                                 @Html.ValidationMessageFor(model => model.Email)
                                 <a style="color:red">@ViewBag.Error1</a>

@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="row">
-        <h2> Welcome @Session["uname"] </h2> 
+        <h2> Welcome @Session["uname"]<img src="@("/Content/themes/base/images/Users/"+@Session["id"]+".jpg")" width="50" height="50" class="img-circle" /> </h2> 
         <div class="col-sm-3">
             <div class="left-sidebar">
                 <h2 class="navbar navbar-inverse" style="color:white">Category</h2>
