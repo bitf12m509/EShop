@@ -336,7 +336,7 @@
                                         <tr>
                                             <th class="table-header-repeat line-left minwidth-1"><a href="">Product Id</a>	</th>
                                             <th class="table-header-repeat line-left minwidth-1"><a href="">Name Of Product</a>	</th>
-
+                                            <th class="table-header-repeat line-left minwidth-1"><a href="">Product</a>	</th>
                                             <th class="table-header-repeat line-left"><a href="">Price</a></th>
 
                                             <th class="table-header-options line-left"><a href="">Action</a></th>
@@ -346,6 +346,7 @@
                                             <tr>
                                                 <td>@i.Id</td>
                                                 <td>@i.PName</td>
+                                                <td><img src="@("/Content/themes/base/images/Products/" + @i.Id + ".jpg")" alt="" /></td>
                                                 <td><a href="">@i.Price</a></td>
                                                 
 

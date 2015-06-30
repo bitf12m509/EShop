@@ -299,7 +299,7 @@
                                         <tr>
 
                                             <th class="table-header-repeat line-left minwidth-1"><a href="">UserName</a>	</th>
-
+                                            <th class="table-header-repeat line-left minwidth-1"><a href="">Picture</a>	</th>
                                             <th class="table-header-repeat line-left"><a href="">Email</a></th>
 
                                             <th class="table-header-options line-left"><a href="">Password</a></th>
@@ -309,6 +309,8 @@
                                             <tr>
 
                                                 <td>@i.Username</td>
+                                               
+                                                <td><img src="@("/Content/themes/base/images/Users/" + @i.Id + ".jpg" )" width="50" height="50" /></td>
                                                 <td><a href="">@i.Email</a></td>
                                                 <td>@i.Password</td>
 
